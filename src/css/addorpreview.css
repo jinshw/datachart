@@ -1,0 +1,262 @@
+
+iframe::-webkit-scrollbar{
+  width: 0;
+  height: 0;
+  display: none;
+}
+#bschart.chart {
+    display: none;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10500;
+    -webkit-overflow-scrolling: touch;
+    outline: 0;
+    background-color: rgba(0,0,0,.6);
+}
+#bschart .chart-dialog{
+  width: 750px;
+  position: relative;
+  margin: 30px auto;
+  border-radius: 5px;
+  overflow: hidden;
+  padding: 20px;
+}
+#bschart .chart-content{
+  width: 100%;
+}
+#bschart.chart .close{
+  position: absolute;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+#bschart.chart .close.gray{
+  right: 10px;
+  top: 10px;
+  width: 25px;
+  height: 25px;
+  font-size: 18px;
+  background-color: #D3D3D3;
+}
+#bschart.chart .close.black{
+  right: 0;
+  top: 0;
+  width: 40px;
+  height: 40px;
+  background-color: #5B5C60;
+  font-size: 30px;
+}
+#bschart .chart-body{
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  border-radius: 3px;
+  overflow: hidden;
+}
+#bschart .chart-body.gray{
+   background-color: #CDCDCD;
+}
+#bschart .chart-body.black{
+  background-color: #373941;
+  justify-content: space-around;
+}
+#bschart .editor-privew-code{
+  margin-top: 15px;
+  width: 215px;
+  height: 450px;
+  background-color: #fff;
+}
+#bschart .editor-privew-img{
+  width: 100%;
+  margin-top: 100px;
+  text-align: center;
+}
+
+#bschart .editor-privew-url{
+  width: 100%;
+  font-size: 16px;
+  padding: 10px;
+}
+#bschart .editor-privew-url a{
+  display: block;
+  width: 200px;
+  word-wrap: break-word;
+  font-size: 16px;
+}
+#bschart .editor-privew-btn{
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  margin: 10px auto;
+}
+#bschart .editor-privew-btn a{
+  cursor: pointer;
+}
+#bschart .chart-menu-container{
+  width: 60px;
+}
+#bschart .chart-menu-container .menu-list{
+  width: 100%;
+  padding: 0;
+  list-style-type: none;
+}
+#bschart .chart-menu-container .menu-list .menu-item{
+  width: 60px;
+  height: 35px;
+  text-align: center;
+  display: flex;
+  margin: 5px 0;
+  justify-content: center;
+  align-items: center;
+  border-radius-top-left:5px;
+  border-radius-bottom-left: 5px;
+  -webkit-border-top-left-radius :5px;
+  -webkit-border-bottom-left-radius:5px;
+  font-size: 14px;
+  cursor: pointer;
+}
+#bschart .chart-menu-container .menu-list .menu-item.cur,#bschart .chart-menu-container .menu-list .menu-item:hover{
+  background-color: #EEEEEE;
+}
+#bschart .chart-container{
+  width: 650px;
+  height: 510px;
+  border-radius: 5px;
+  padding: 10px 0;
+  padding-left: 10px;
+  overflow-y:scroll;
+}
+#bschart .chart-container.gray{
+  background-color: #EEEEEE;
+}
+#bschart .dtm-con-item{
+  float: left;
+  width: 190px;
+  height: 150px;
+  margin: 10px;
+  overflow: hidden; 
+  cursor: pointer;
+}
+#bschart .dtm-con-item .chart-img-container{
+  width: 190px;
+  height: 100px;
+}
+#bschart .dtm-con-item .chart-img{
+  width: 100%;
+}
+#bschart .dtm-con-item .chart-title{
+  margin: 0;
+  font-size: 16px;
+  margin-top: 5px;
+  font-weight: 700;
+  color: #CD6A38;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow:ellipsis;
+}
+#bschart .dtm-con-item .chart-desc{
+  margin: 0;
+  margin-top: 5px;
+  font-style: italic;
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow:ellipsis;
+}
+#bschart .chart-body iframe.editor-privew{
+  width: 650px;
+  height: 450px;
+  margin: 15px 0;
+  overflow: hidden;
+  outline: none;
+  background-color: #fff;
+}
+/**预览样式*/
+#bschart .previewp-area{
+  display: flex;
+  justify-content: center;
+  width: 705px;
+  background-color: #EEE;
+}
+#bschart .preview-content{
+  width: 414px;
+  height: 550px;
+  background: #fff;
+  position: relative;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+#bschart .preview-iframe{
+  width: 414px;
+  height: 550px;
+  box-shadow: 0px 0px 15px 5px #BCBCBC;
+}
+#bschart .qrcode-area{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 320px;
+  background-image: url(img/bg-preview-qrcodeArea.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  float: left;
+  box-shadow: -5px 0px 25px #BCBCBC;
+  position: relative;
+}
+#bschart .preview-close{
+  position: absolute;
+  right: 10px;
+  color: #fff;
+  font-size: 32px;
+  font-weight: 700;
+  cursor: pointer;
+}
+#bschart .qrcode-content{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 205px;
+  height: 350px;
+}
+#bschart .qrcode-img-container{
+  width: 205px;
+  height: 205px;
+  background: #fff;
+}
+#bschart .qrcode-img{
+  width: 189px;
+  height: 189px;
+  margin: 8px;
+}
+#bschart .qrcode-item{
+  width: 158px;
+  padding: 10px 0;
+  margin-top: 30px;
+  border: 1px solid #fff;
+  border-radius: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+#bschart .qrcode-item a{
+  text-decoration: none;
+  color: #fff;
+}
+#bschart .qrcode-item.phone-show{
+  margin-top: 10px;
+  padding-bottom: 0;
+  border: none;
+  cursor:auto;
+}
+#bschart .qrcode-item.phone-show a{
+  cursor: default;
+}

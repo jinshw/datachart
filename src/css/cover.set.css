@@ -1,0 +1,72 @@
+.cover-set-container{
+    background: #373941;
+    color: #f0f0f0;
+    position: fixed;
+    overflow: hidden;
+    z-index: 1010;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.6) 0px 0px 3px;
+    -moz-box-shadow: rgba(0, 0, 0, 0.6) 0px 0px 3px;
+    box-shadow: rgba(0, 0, 0, 0.6) 0px 0px 3px;
+    top: 100px;
+    bottom: 0;
+    margin: 0;
+    padding: 0;
+    left: 0;
+    width: 500px;
+    display: none;
+}
+.cover-set-items{
+    position: absolute;
+    left: 15px;
+    top: 50px;
+    right: 15px;
+    bottom: 15px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    background: #4c4e59;
+    padding: 10px;
+}
+.dtm-close-btn{
+    position: absolute;
+    top: 10px;
+    z-index: 50;
+    right: 20px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    display: inline-block;
+    cursor: pointer;
+    color: #fff;
+    background: #3498db;
+    text-align: center;
+    font-size: 14px;
+    min-width: 60px;
+    height: 24px;
+    line-height: 24px;
+    padding: 0 8px;
+}
+.dtm-cover-img{
+	width: 300px;
+}
+.dtm-edtitm-con img{
+    width: 160px;
+    height: 120px;
+    border: 1px solid #fff;
+    cursor: pointer;
+}
+/*dtm-item样式*/
+.cover-set-items .dtm-item{
+    position: relative;
+    color: #f0f0f0;
+}
+.cover-set-items .dtm-item.border-bottom{
+    border-bottom: 1px solid #5b5d6b;
+}
+.cover-set-items .dtm-item.padding-top-bottom{
+    margin-bottom: 10px;
+}

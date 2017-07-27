@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="utf-8">
+	<title>数据图表列表页面</title>
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="author" content="">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+  <link rel="stylesheet" type="text/css" href="../static/css/font-awesome-4.3.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="../static/css/chart-list.css">
+  <script>
+
+		var BASE_URL="http://localhost:8333";//replacebygulp
+
+    // function isIE() {
+    //   if (!!window.ActiveXObject || "ActiveXObject" in window)
+    //       return true;
+    //   else
+    //       return false;
+    // }
+    // if(isIE()){
+    //   document.body.innerHTML = "";
+    //   document.write('请使用非IE浏览器');
+    // }
+  </script>
+</head>
+<body>
+
+<div class="top-nav-container">
+    <div class="top-logo">
+		<a>数据图表</a>
+	</div>
+     <div class="nav-menu">
+      <ul>
+        <li class="active longsinglepage" data-id="1">我的作品</li>
+      </ul>
+     </div>
+  	 <div class="top-nav-icon">
+        <a><i class="fa fa-user top-icon"></i></a>
+        <a><i class="top-icon top-login-username">用户名</i></a>
+        <a href="javascript:void(0)" class="returnback">返回</a>
+      </div>
+  </div>
+<div class="clearfix"></div>
+<div class="chart-list-container">
+	<div class="list-classfy">
+		<div class="list-add-container">
+			<div class="list-add-icon">
+				<i class="fa fa-user"></i>
+				作品分类管理
+			</div>
+			<div class="list-add-btn">
+				<i class="fa fa-plus"></i>
+			</div>
+		</div>
+		<div class="item-mode item-mode-name add-input">
+			<span class="mode-left">
+				<input class="mode-input" data-id="" type="text"/>
+			</span>
+			<span class="mode-right">
+				<i class="fa fa-check group-submit"></i>
+				<i class="fa fa-remove group-cancel"></i>
+			</span>
+
+		</div>
+		<ul class="list">
+			<li class="item item-select all-charts" data-id="">
+				<div class="item-mode">
+					<span class="mode-left mode-name">全部图表</span>
+				</div>
+			</li>
+			<!-- <li class="item">
+				<div class="item-mode">
+					<span class="mode-left">风景</span>
+					<span class="mode-right">
+						<i class="fa fa-pencil group-rename"></i>
+						<i class="fa fa-trash group-remove"></i>
+					</span>
+				</div>
+				<div class="item-mode item-mode-input">
+					<span class="mode-left">
+						<input class="mode-input" type="text"/>
+					</span>
+					<span class="mode-right">
+						<i class="fa fa-check group-submit"></i>
+						<i class="fa fa-remove group-cancel"></i>
+					</span>
+
+				</div>
+			</li> -->
+		</ul>
+	</div>
+	<div class="list-container">
+		<div class="list-title">
+			<div class="title-left">
+				<i class="fa fa-caret-right fa-lg"></i>
+				<span>数据图表》</span>
+				<span>我的作品</span>
+			</div>
+			<div class="title-right">
+				<div class="operator-btn">
+					<span class="btn-display check-all">全选</span>
+					<span class="btn-display set-sort">设置分类</span>
+					<span class="btn-display work-remove">删除</span>
+					<span class="btn-display cancel-select">取消选择</span>
+					<span class="btn-select">选择</span>
+				</div>
+				<div class="search-btn">
+					<input type="text" value="" placeholder="作品名称"/>
+					<i class="fa fa-search"></i>
+				</div>
+			</div>
+		</div>
+		<div class="list-main-container">
+			<ul class="list-main">
+				<li class="chart-item chart-add">
+					<div class="create-work">
+						<div class="add-work">
+							<img src="../static/css/img/chartList/add.png">
+						</div>
+						<div class="add-work-tittle">
+							<p>点击创建作品</p>
+						</div>
+					</div>
+				</li>
+				<!-- <li class="chart-item">
+					<div class="checkbox-select">
+						<input type="checkbox" name="checkbox" value="1"/>
+						<i class="fa fa-check-square"></i>
+					</div>
+					<div class="work-img">
+						<div class="work-no-publish-box">
+							<div class="work-no-publish">在编辑</div>
+						</div>
+						<img src="../static/css/img/chartList/fmImg.jpg"/>
+						<div class="code">
+							<div class="remove-one-work">
+								<i class="fa fa-times remove-work"></i>
+							</div>
+							<div class="code-img">
+								<a href="javascript:void(0)">
+									<img src="../static/css/img/chartList/QRCode.png"/>
+								</a>
+							</div>
+							<div class="work-operate-set">
+								<a href="javascript:void(0)" class="work-preview" title="预览作品">
+									<span>预览</span>
+									<i class="fa fa-eye"></i>
+								</a>
+								<a href="javascript:void(0)" class="work-editor" title="编辑作品">
+									<span>编辑</span>
+									<i class="fa fa fa-pencil"></i>
+								</a>
+								<a href="javascript:void(0)" class="work-copy" title="复制作品">
+									<span>复制</span>
+									<i class="fa fa-files-o"></i>
+								</a>
+								<a href="javascript:void(0)" class="work-info-setup" title="设置作品信息">
+									<span>设置</span>
+									<i class="fa fa-cog"></i>
+								</a>
+								<a href="javascript:void(0)" class="work-public" title="发布作品">
+									<span>发布</span>
+									<i class="fa fa-share-square fa-lg"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="work-title">
+						<p title="意媒--创意圈">意媒--创意圈</p>
+					</div>
+					<div class="work-icon">
+						<div class="work-preview-num">
+							<i class="fa fa-eye fa-lg"></i>
+							<span>1234567</span>
+						</div>
+						<div class="work-share">
+							<i class="fa fa-share-alt fa-lg"></i>
+						</div>
+					</div>
+				</li> -->
+			</ul>
+		</div>
+		<div class="clearfix"></div>
+		<div class="no-more-display">没有更多作品了</div>
+		<div class="returntop"></div>
+		<div class="share-menu">
+			<div class="arrow"></div>
+			<input type="hidden" name="share-work" value=""/>
+			<ul class="operator-menu">
+				<li class="share-to-createshow">
+					<a href="javascript:void(0)" >
+						<i class="fa fa-pagelines fa-lg"></i>
+						<p>创意秀</p>
+					</a>
+				</li>
+				<li class="share-to-qq">
+					<a href="javascript:void(0)" >
+						<i class="fa fa-star-o fa-lg"></i>
+						<p>空间秀</p>
+					</a>
+				</li>
+				<li class="share-to-friends">
+					<a href="javascript:void(0)" >
+						<i class="fa fa-user fa-lg"></i>
+						<p>好友</p>
+					</a>
+				</li>
+				<li class="share-to-moban">
+					<a href="javascript:void(0)" >
+						<i class="fa fa-dropbox fa-lg"></i>
+						<p>模板库</p>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="clearfix"></div>
+<div class="bottom-container">
+ <div class="copyright">Copyright © 2015 All Rights Reserved 版权所有</div>
+</div>
+</body>
+<!--<script type="text/javascript" src="//cdn.bootcss.com/vue/1.0.15/vue.common.js"></script>-->
+<script src="../static/js/datachart.js"></script>
+
+</html>

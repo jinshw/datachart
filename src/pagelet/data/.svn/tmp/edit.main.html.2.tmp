@@ -1,0 +1,2098 @@
+<section id="edit-main-id" class="edit-dc-container">
+	<section class="edit-dc-area">
+		<h1 class="edit-dc-title" contenteditable="true">
+			未命名
+		</h1>
+		<section class="edit-dc-charts">
+			<section class="charts-edit-area">
+
+				<!-- template -->
+				<section class='charts-edit-area-main chart-container-tmpl' 
+				style="width:550px;height:300px;background-color:orange;display:none;
+				line-height:300px;text-align:center; font-size:40px;font-family:楷体">	
+				放在这里
+				</section>
+
+				<!-- <section class='charts-edit-area-main'>													
+					<section  class='charts-content' ></section>                                                     
+					<section class='charts-tools-main' style=''>                        
+						<section class='charts-tools-content'>                                                 
+							<section class='ctc-btn dt-drag' draggable="true"><i class='fa fa-arrows'></i> 拖拽</section>      
+							<section class='ctc-btn charts-tools-dedit' data-cpt='name:'jinshw',type:'button''>数据编辑</section>
+							<section class='ctc-btn'>参考调整</section>                                  
+							<section class='ctc-btn'>显示代码</section>
+							<section class='ctc-btn' data-op-type='remove'>删除</section>   
+						</section>      
+					</section> 
+				</section> -->
+
+	
+			</section>
+		</section>
+	</section>
+
+	<section class="cpt-chtedt">
+        <section class="dtm-btn dtm-close-btn" data-cpt="" id="dtm-close-btn" v-on:click="closeLeft">关闭</section>
+        <section class="dtm-tabh">
+            <ul class="dtm-tabh-h">
+                <li data-id="data-editor" class="dtm-tabh-hi active">数据编辑</li>
+                <li data-id="param-editor" class="dtm-tabh-hi ">参数调整</li>
+            </ul>
+            <section class="dtm-conh-data-editor dtm-tabh-coni">
+                <section id="data-table" class="dtm-handsontable handsontable" style="display:none"></section>
+                <section class="dtm-adjustment-param">
+                	<section class="adjustment-param-menu-container">
+                		<ul class="adjustment-param-menu">
+                			<li class="adjustment-param-item active">基础</li>
+                			<li class="adjustment-param-item">标题</li>
+                			<li class="adjustment-param-item">图例</li>
+                			<li class="adjustment-param-item">提示</li>
+                			<li class="adjustment-param-item">工具</li>
+                		</ul>
+                	</section>
+                    <!--基础开始-->
+                	<section class="adjustment-param-container active">
+            			<section class="dtm-tab1">
+            				<section class="dtm-tab1-inner">
+            					<section data-cpt-tab1="base" class="dtm-tab1-hi dtm-tab1-hi-curr">通用</section>
+            				</section>
+            			</section>
+            			<section class="dtm-container active">
+            				<section class="dtm-item border-bottom padding-top-bottom cpt-chkbtn-disabled">
+            					<section class="dtm-item-content">
+            						<section class="dtm-edtitm-title dtm-edtitm-title-check">
+	            						<span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+	            						<span class="dtm-edtitm-title-con">图的高度</span>
+	            					</section>
+	            					<section class="dtm-edtitm-con">
+	            						<section class="dtm-edtitm-height">
+	            							<section data-val="chart-height" class="cpt-sld-bar">
+	            								<section data-val="chart-height" class="cpt-sld-background">
+                                                    <section class="cpt-sld-highlight" v-bind:style="{width:(chartHeightVal/800)*100+'%'}"></section>
+                                                </section>
+	            								<section class="cpt-sld-thumb ui-draggable">
+	            									<section data-val="chart-height" v-bind:style="{left:(chartHeightVal/800)*100+'%'}"></section>
+	            								</section>
+	            							</section>
+	            							<section class="dtm-edtitm-editor">
+	            								<input data-val="chart-height" type="text" v-model="chartHeightVal" onchange="refreshChart('h',this.value)" />
+	            							</section>
+	            							<section class="dtm-msrggt-unit">px</section>
+	            						</section>
+	            					</section>
+            					</section>
+            					<section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+            				</section>
+            				<section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+            					<section class="dtm-item-content">
+	            					<section class="dtm-edtitm-title dtm-edtitm-title-check">
+	            						<span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+	            						<span class="dtm-edtitm-title-con chart-type-checkbox">系列的图形类型</span>
+	            					</section>
+	            					<section class="dtm-edtitm-title margin-right-100px dtm-line chart-type-bt">
+	            						<span class="shape cur" v-on:click="chartTypeSelect">折线</span>
+	            						<span class="shape" v-on:click="chartTypeSelect">柱</span>
+	            					</section>
+	            				</section>
+	            				<section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+            			    </section>
+                			<section class="dtm-item padding-top-bottom border-bottom cpt-chkbtn-disabled">
+            					<section class="dtm-item-content">
+	            					<section class="dtm-edtitm-title dtm-edtitm-title-check">
+	            						<span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+	            						<span class="dtm-edtitm-title-con">折线转为平滑曲线</span>
+	            					</section>
+	            					<section class="dtm-edtitm-title margin-right-100px dtm-adjust">
+	            						<span class="shape cur yes-or-no">是</span>
+	            						<span class="shape yes-or-no">否</span>
+	            					</section>
+	            				</section>
+	            				<section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                			</section>
+                			<section class="dtm-item padding-top-bottom border-bottom cpt-chkbtn-disabled">
+            					<section class="dtm-item-content">
+            						<section class="dtm-edtitm-title dtm-edtitm-title-check">
+                						<span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                						<span class="dtm-edtitm-title-con">小标志大小</span>
+                					</section>
+                					<section class="dtm-edtitm-con">
+                						<section class="dtm-edtitm-height">
+                							<section data-val="mark-size" class="cpt-sld-bar">
+                								<section data-val="mark-size" class="cpt-sld-background">
+                                                    <section class="cpt-sld-highlight"></section>
+                                                </section>
+                								<section class="cpt-sld-thumb ui-draggable">
+                									<section data-val="mark-size"></section>
+                								</section>
+                							</section>
+                							<section class="dtm-edtitm-editor">
+                								<input data-val="mark-size" type="text" value="0"/>
+                							</section>
+                							<section class="dtm-msrggt-unit">px</section>
+                						</section>
+                					</section>
+            					</section>
+            					<section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+            				</section>
+            				<section class="dtm-item padding-top-bottom">
+            					<section class="dtm-item-content padding-top-bottom">
+    	            					<section class="dtm-edtitm-title">
+    	            						<span class="dtm-edtitm-title-con special-font-color">通用颜色</span>
+    	            					</section>
+    	            			</section>
+            				</section>
+            				<section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+            					<section class="dtm-item-content">
+                					<section class="dtm-edtitm-title dtm-edtitm-title-check">
+                						<span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                						<span class="dtm-edtitm-title-con">图整体背景色</span>
+                					</section>
+                					<section id="dtm-color" class="dtm-color margin-right-70px">
+                						<section class=""></section>
+                					</section>
+                				</section>
+                				<section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+            				</section>
+            		    </section>
+                    </section>
+                    <!--基础结束-->
+                    <!--标题开始-->
+                    <section class="adjustment-param-container">
+                        <!--标题二级菜单开始-->
+                        <section class="dtm-tab1">
+                            <section class="dtm-tab1-inner">
+                                <section data-cpt-tab1="base" class="dtm-tab1-hi dtm-tab1-hi-curr">内容</section>
+                                <section data-cpt-tab1="base" class="dtm-tab1-hi">样式</section>
+                            </section>
+                        </section>
+                        <!--标题二级菜单结束-->
+                        <!--标题内容开始-->
+                        <section class="dtm-container active">
+                            <section class="dtm-item padding-bottom-10 cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">主标题文本</span>
+                                    </section>
+                                    <section class="dtm-edtitm-con dtm-edtitm-input">
+                                        <input type="text" name="main-title"/>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-bottom-10 cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">主标题文本超链接</span>
+                                    </section>
+                                    <section class="dtm-edtitm-con dtm-edtitm-input">
+                                        <input type="text" name="main-title-href"/>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-bottom-10 cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">副标题文本</span>
+                                    </section>
+                                    <section class="dtm-edtitm-con dtm-edtitm-input">
+                                        <input type="text" name="sub-title"/>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-bottom-10 cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">副标题文本超链接</span>
+                                    </section>
+                                    <section class="dtm-edtitm-con dtm-edtitm-input">
+                                        <input type="text" name="sub-title-href"/>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                        </section>
+                        <!--标题内容结束-->
+                        <!--标题样式开始-->
+                        <section class="dtm-container">
+                            <section class="dtm-item padding-top-bottom">
+                                <section class="dtm-item-content padding-top-bottom">
+                                        <section class="dtm-edtitm-title">
+                                            <span class="dtm-edtitm-title-con special-font-color">标题块位置</span>
+                                        </section>
+                                </section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                    <section class="dtm-item-content">
+                                        <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                            <span class="dtm-item-check">
+                                                <i class="fa fa-check"></i>
+                                            </span>
+                                            <span class="dtm-edtitm-title-con">水平安放位置</span>
+                                        </section>
+                                        <section class="change-btn align-position-change">
+                                            切换
+                                        </section>
+                                        <section class="dtm-edtitm-title margin-right-50 dtm-align-position title-active fixed-position">
+                                            <span class="shape cur">居左</span>
+                                            <span class="shape">居中</span>
+                                            <span class="shape">居右</span>
+                                        </section>
+                                        <section class="dtm-edtitm-title dtm-align-position random-position">
+                                          <section class="dtm-edtitm-height">
+                                                <section data-val="title-position" class="cpt-sld-bar">
+                                                    <section data-val="title-position" class="cpt-sld-background">
+                                                        <section class="cpt-sld-highlight"></section>
+                                                    </section>
+                                                    <section class="cpt-sld-thumb ui-draggable">
+                                                        <section data-val="title-position"></section>
+                                                    </section>
+                                                </section>
+                                                <section class="dtm-edtitm-editor">
+                                                    <input data-val="title-position" type="text" value="0"/>
+                                                </section>
+                                                <section class="dtm-msrggt-unit">px</section>
+                                            </section>
+                                        </section>
+                                    </section>
+                                    <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                    <section class="dtm-item-content">
+                                        <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                            <span class="dtm-item-check">
+                                                <i class="fa fa-check"></i>
+                                            </span>
+                                            <span class="dtm-edtitm-title-con">垂直安放位置</span>
+                                        </section>
+                                        <section class="change-btn vertical-position-change">
+                                            切换
+                                        </section>
+                                        <section class="dtm-edtitm-title margin-right-50 dtm-vertical-position title-active fixed-position">
+                                            <span class="shape cur">居左</span>
+                                            <span class="shape">居中</span>
+                                            <span class="shape">居右</span>
+                                        </section>
+                                        <section class="dtm-edtitm-title dtm-vertical-position random-position">
+                                          <section class="dtm-edtitm-height">
+                                                <section data-val="title-position" class="cpt-sld-bar">
+                                                    <section data-val="title-position" class="cpt-sld-background">
+                                                        <section class="cpt-sld-highlight"></section>
+                                                    </section>
+                                                    <section class="cpt-sld-thumb ui-draggable">
+                                                        <section data-val="title-position"></section>
+                                                    </section>
+                                                </section>
+                                                <section class="dtm-edtitm-editor">
+                                                    <input data-val="title-position" type="text" value="0"/>
+                                                </section>
+                                                <section class="dtm-msrggt-unit">px</section>
+                                            </section>
+                                        </section>
+                                    </section>
+                                    <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom border-bottom cpt-chkbtn-disabled">
+                                    <section class="dtm-item-content">
+                                        <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                            <span class="dtm-item-check">
+                                                <i class="fa fa-check"></i>
+                                            </span>
+                                            <span class="dtm-edtitm-title-con">水平对齐位置</span>
+                                        </section>
+                                        <section class="dtm-edtitm-title margin-right-50 dtm-text-align title-align-active fixed-position">
+                                            <span class="shape cur">居左</span>
+                                            <span class="shape">居中</span>
+                                            <span class="shape">居右</span>
+                                        </section>
+                                    </section>
+                                    <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom">
+                                <section class="dtm-item-content padding-top-bottom">
+                                        <section class="dtm-edtitm-title">
+                                            <span class="dtm-edtitm-title-con special-font-color">标题块外观</span>
+                                        </section>
+                                </section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">标题背景色</span>
+                                    </section>
+                                    <section class="dtm-color margin-right-70px">
+                                        <section class=""></section>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">标题边框线宽</span>
+                                    </section>
+                                    <section class="dtm-edtitm-con">
+                                        <section class="dtm-edtitm-height">
+                                            <section data-val="title-border" class="cpt-sld-bar">
+                                                <section data-val="title-border" class="cpt-sld-background">
+                                                    <section class="cpt-sld-highlight"></section>
+                                                </section>
+                                                <section class="cpt-sld-thumb ui-draggable">
+                                                    <section data-val="title-border"></section>
+                                                </section>
+                                            </section>
+                                            <section class="dtm-edtitm-editor">
+                                                <input data-val="title-border" type="text" value="0"/>
+                                            </section>
+                                            <section class="dtm-msrggt-unit">px</section>
+                                        </section>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">标题边框颜色</span>
+                                    </section>
+                                    <section class="dtm-color margin-right-70px">
+                                        <section class=""></section>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">标题内边距</span>
+                                    </section>
+                                    <section class="dtm-edtitm-con">
+                                        <section class="dtm-edtitm-height">
+                                            <section data-val="title-padding" class="cpt-sld-bar">
+                                                <section data-val="title-padding" class="cpt-sld-background">
+                                                    <section class="cpt-sld-highlight"></section>
+                                                </section>
+                                                <section class="cpt-sld-thumb ui-draggable">
+                                                    <section data-val="title-padding"></section>
+                                                </section>
+                                            </section>
+                                            <section class="dtm-edtitm-editor">
+                                                <input data-val="title-padding" type="text" value="0"/>
+                                            </section>
+                                            <section class="dtm-msrggt-unit">px</section>
+                                        </section>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom border-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">主副标题纵向间隔</span>
+                                    </section>
+                                    <section class="dtm-edtitm-con">
+                                        <section class="dtm-edtitm-height">
+                                            <section data-val="title-sub-margin" class="cpt-sld-bar">
+                                                <section data-val="title-sub-margin" class="cpt-sld-background">
+                                                    <section class="cpt-sld-highlight"></section>
+                                                </section>
+                                                <section class="cpt-sld-thumb ui-draggable">
+                                                    <section data-val="title-sub-margin"></section>
+                                                </section>
+                                            </section>
+                                            <section class="dtm-edtitm-editor">
+                                                <input data-val="title-sub-margin" type="text" value="0"/>
+                                            </section>
+                                            <section class="dtm-msrggt-unit">px</section>
+                                        </section>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom">
+                                <section class="dtm-item-content padding-top-bottom">
+                                        <section class="dtm-edtitm-title">
+                                            <span class="dtm-edtitm-title-con special-font-color">主标题文本样式</span>
+                                        </section>
+                                </section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">文本颜色</span>
+                                    </section>
+                                    <section class="dtm-color margin-right-70px">
+                                        <section class=""></section>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">字体大小</span>
+                                    </section>
+                                    <section class="dtm-edtitm-con">
+                                        <section class="dtm-edtitm-height">
+                                            <section data-val="title-font" class="cpt-sld-bar">
+                                                <section data-val="title-font" class="cpt-sld-background">
+                                                    <section class="cpt-sld-highlight"></section>
+                                                </section>
+                                                <section class="cpt-sld-thumb ui-draggable">
+                                                    <section data-val="title-font"></section>
+                                                </section>
+                                            </section>
+                                            <section class="dtm-edtitm-editor">
+                                                <input data-val="title-font" type="text" value="0"/>
+                                            </section>
+                                            <section class="dtm-msrggt-unit">px</section>
+                                        </section>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                    <section class="dtm-item-content dtm-item-flex-start">
+                                        <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                            <span class="dtm-item-check">
+                                                <i class="fa fa-check"></i>
+                                            </span>
+                                            <span class="dtm-edtitm-title-con">字体样式</span>
+                                        </section>
+                                        <section class="dtm-edtitm-title dtm-title-style dtm-main-title-style">
+                                            <span class="shape cur">普通</span>
+                                            <span class="shape">倾斜文字(oblique)</span>
+                                            <span class="shape">斜体(italic)</span>
+                                        </section>
+                                    </section>
+                                    <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">字体粗细</span>
+                                    </section>
+                                    <section class="dtm-edtitm-title dtm-title-font-style dtm-main-title-font">
+                                        <span class="shape cur">普通</span>
+                                        <span class="shape">加粗</span>
+                                        <span class="shape">更粗</span>
+                                        <span class="shape">更细</span>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content dtm-item-flex-center">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con text-align-way">文本水平对齐方式</span>
+                                    </section>
+                                    <section class="dtm-edtitm-title dtm-text-align-way dtm-main-text-align">
+                                        <span class="shape cur">居左</span>
+                                        <span class="shape">居中</span>
+                                        <span class="shape">居右</span>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom border-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content dtm-item-flex-center">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con text-align-way">文本垂直对齐方式</span>
+                                    </section>
+                                    <section class="dtm-edtitm-title dtm-text-align-way dtm-main-text-vertical">
+                                        <span class="shape cur">居上</span>
+                                        <span class="shape">居中</span>
+                                        <span class="shape">居下</span>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom">
+                                <section class="dtm-item-content padding-top-bottom">
+                                        <section class="dtm-edtitm-title">
+                                            <span class="dtm-edtitm-title-con special-font-color">副标题文本样式</span>
+                                        </section>
+                                </section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">文本颜色</span>
+                                    </section>
+                                    <section class="dtm-color margin-right-70px">
+                                        <section class=""></section>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">字体大小</span>
+                                    </section>
+                                    <section class="dtm-edtitm-con">
+                                        <section class="dtm-edtitm-height">
+                                            <section data-val="sub-title-font" class="cpt-sld-bar">
+                                                <section data-val="sub-title-font" class="cpt-sld-background">
+                                                    <section class="cpt-sld-highlight"></section>
+                                                </section>
+                                                <section class="cpt-sld-thumb ui-draggable">
+                                                    <section data-val="sub-title-font"></section>
+                                                </section>
+                                            </section>
+                                            <section class="dtm-edtitm-editor">
+                                                <input data-val="sub-title-font" type="text" value="0"/>
+                                            </section>
+                                            <section class="dtm-msrggt-unit">px</section>
+                                        </section>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                    <section class="dtm-item-content dtm-item-flex-start">
+                                        <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                            <span class="dtm-item-check">
+                                                <i class="fa fa-check"></i>
+                                            </span>
+                                            <span class="dtm-edtitm-title-con">字体样式</span>
+                                        </section>
+                                        <section class="dtm-edtitm-title dtm-title-style dtm-sub-title-style">
+                                            <span class="shape cur">普通</span>
+                                            <span class="shape">倾斜文字(oblique)</span>
+                                            <span class="shape">斜体(italic)</span>
+                                        </section>
+                                    </section>
+                                    <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                    <section class="dtm-item-content">
+                                        <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                            <span class="dtm-item-check">
+                                                <i class="fa fa-check"></i>
+                                            </span>
+                                            <span class="dtm-edtitm-title-con">字体粗细</span>
+                                        </section>
+                                        <section class="dtm-edtitm-title dtm-title-font-style dtm-sub-title-font">
+                                            <span class="shape cur">普通</span>
+                                            <span class="shape">加粗</span>
+                                            <span class="shape">更粗</span>
+                                            <span class="shape">更细</span>
+                                        </section>
+                                    </section>
+                                    <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                    <section class="dtm-item-content dtm-item-flex-center">
+                                        <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                            <span class="dtm-item-check">
+                                                <i class="fa fa-check"></i>
+                                            </span>
+                                            <span class="dtm-edtitm-title-con text-align-way">文本水平对齐方式</span>
+                                        </section>
+                                        <section class="dtm-edtitm-title dtm-text-align-way dtm-sub-text-align">
+                                            <span class="shape cur">居左</span>
+                                            <span class="shape">居中</span>
+                                            <span class="shape">居右</span>
+                                        </section>
+                                    </section>
+                                    <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom border-bottom cpt-chkbtn-disabled">
+                                    <section class="dtm-item-content dtm-item-flex-center">
+                                        <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                            <span class="dtm-item-check">
+                                                <i class="fa fa-check"></i>
+                                            </span>
+                                            <span class="dtm-edtitm-title-con text-align-way">文本垂直对齐方式</span>
+                                        </section>
+                                        <section class="dtm-edtitm-title dtm-text-align-way dtm-sub-text-vertical">
+                                            <span class="shape cur">居上</span>
+                                            <span class="shape">居中</span>
+                                            <span class="shape">居下</span>
+                                        </section>
+                                    </section>
+                                    <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            
+                        </section>
+                        <!--标题样式结束-->
+                    </section>
+                    <!--标题结束-->
+                    <!--图例开始-->
+                    <section class="adjustment-param-container">
+                        <!--图例二级菜单开始-->
+                        <section class="dtm-tab1">
+                            <section class="dtm-tab1-inner">
+                                <section data-cpt-tab1="base" class="dtm-tab1-hi dtm-tab1-hi-curr">基础</section>
+                            </section>
+                        </section>
+                        <!--图例二级菜单结束-->
+                        <!--基础开始-->
+                        <section class="dtm-container active">
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content dtm-item-flex-center">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">是否显示图例</span>
+                                    </section>
+                                    <section class="dtm-edtitm-title dtm-text-align-way legend">
+                                        <span class="shape cur yes-or-no">是</span>
+                                        <span class="shape yes-or-no">否</span>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item border-bottom padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content dtm-item-flex-center">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">图例选择模式</span>
+                                    </section>
+                                    <section class="dtm-edtitm-title dtm-text-align-way legend-mode">
+                                        <span class="shape cur">不可选</span>
+                                        <span class="shape">单选</span>
+                                        <span class="shape">多选</span>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom">
+                                <section class="dtm-item-content padding-top-bottom">
+                                        <section class="dtm-edtitm-title">
+                                            <span class="dtm-edtitm-title-con special-font-color">图例位置</span>
+                                        </section>
+                                </section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                    <section class="dtm-item-content">
+                                        <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                            <span class="dtm-item-check">
+                                                <i class="fa fa-check"></i>
+                                            </span>
+                                            <span class="dtm-edtitm-title-con">水平安放位置</span>
+                                        </section>
+                                        <section class="change-btn legend-mode-align-change">
+                                            切换
+                                        </section>
+                                        <section class="dtm-edtitm-title margin-right-50 dtm-vertical-position title-active fixed-position">
+                                            <span class="shape cur">居左</span>
+                                            <span class="shape">居中</span>
+                                            <span class="shape">居右</span>
+                                        </section>
+                                        <section class="dtm-edtitm-title dtm-vertical-position random-position">
+                                          <section class="dtm-edtitm-height">
+                                                <section data-val="legend-align-position" class="cpt-sld-bar">
+                                                    <section data-val="legend-align-position" class="cpt-sld-background">
+                                                        <section class="cpt-sld-highlight"></section>
+                                                    </section>
+                                                    <section class="cpt-sld-thumb ui-draggable">
+                                                        <section data-val="legend-align-position"></section>
+                                                    </section>
+                                                </section>
+                                                <section class="dtm-edtitm-editor">
+                                                    <input data-val="legend-align-position" type="text" value="0"/>
+                                                </section>
+                                                <section class="dtm-msrggt-unit">px</section>
+                                            </section>
+                                        </section>
+                                    </section>
+                                    <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                    <section class="dtm-item-content">
+                                        <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                            <span class="dtm-item-check">
+                                                <i class="fa fa-check"></i>
+                                            </span>
+                                            <span class="dtm-edtitm-title-con">垂直安放位置</span>
+                                        </section>
+                                        <section class="change-btn legend-mode-vertical-change">
+                                            切换
+                                        </section>
+                                        <section class="dtm-edtitm-title margin-right-50 dtm-vertical-position title-active fixed-position">
+                                            <span class="shape cur">居左</span>
+                                            <span class="shape">居中</span>
+                                            <span class="shape">居右</span>
+                                        </section>
+                                        <section class="dtm-edtitm-title dtm-vertical-position random-position">
+                                          <section class="dtm-edtitm-height">
+                                                <section data-val="legend-v-position" class="cpt-sld-bar">
+                                                    <section data-val="legend-v-position" class="cpt-sld-background">
+                                                        <section class="cpt-sld-highlight"></section>
+                                                    </section>
+                                                    <section class="cpt-sld-thumb ui-draggable">
+                                                        <section data-val="legend-v-position"></section>
+                                                    </section>
+                                                </section>
+                                                <section class="dtm-edtitm-editor">
+                                                    <input data-val="legend-v-position" type="text" value="0"/>
+                                                </section>
+                                                <section class="dtm-msrggt-unit">px</section>
+                                            </section>
+                                        </section>
+                                    </section>
+                                    <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item border-bottom padding-top-bottom cpt-chkbtn-disabled">
+                                    <section class="dtm-item-content dtm-item-flex-center">
+                                        <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                            <span class="dtm-item-check">
+                                                <i class="fa fa-check"></i>
+                                            </span>
+                                            <span class="dtm-edtitm-title-con">水平放置还是垂直放置</span>
+                                        </section>
+                                        <section class="dtm-edtitm-title legend legend-align-or-vertical">
+                                            <span class="shape cur">水平放置</span>
+                                            <span class="shape">垂直放置</span>
+                                        </section>
+                                        <section class="dtm-edtitm-title dtm-vertical-position random-position">
+                                          <section class="dtm-edtitm-height">
+                                                <section data-val="title-position" class="cpt-sld-bar">
+                                                    <section data-val="title-position" class="cpt-sld-background">
+                                                        <section class="cpt-sld-highlight"></section>
+                                                    </section>
+                                                    <section class="cpt-sld-thumb ui-draggable">
+                                                        <section data-val="title-position"></section>
+                                                    </section>
+                                                </section>
+                                                <section class="dtm-edtitm-editor">
+                                                    <input data-val="title-position" type="text" value="0"/>
+                                                </section>
+                                                <section class="dtm-msrggt-unit">px</section>
+                                            </section>
+                                        </section>
+                                    </section>
+                                    <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom">
+                                <section class="dtm-item-content padding-top-bottom">
+                                        <section class="dtm-edtitm-title">
+                                            <span class="dtm-edtitm-title-con special-font-color">图例外观</span>
+                                        </section>
+                                </section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">图例背景颜色</span>
+                                    </section>
+                                    <section class="dtm-color margin-right-70px">
+                                        <section class=""></section>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">图例边框线宽</span>
+                                    </section>
+                                    <section class="dtm-edtitm-con">
+                                        <section class="dtm-edtitm-height">
+                                            <section data-val="mode-border-font" class="cpt-sld-bar">
+                                                <section data-val="mode-border-font" class="cpt-sld-background">
+                                                    <section class="cpt-sld-highlight"></section>
+                                                </section>
+                                                <section class="cpt-sld-thumb ui-draggable">
+                                                    <section data-val="mode-border-font"></section>
+                                                </section>
+                                            </section>
+                                            <section class="dtm-edtitm-editor">
+                                                <input data-val="mode-border-font" type="text" value="0"/>
+                                            </section>
+                                            <section class="dtm-msrggt-unit">px</section>
+                                        </section>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">图例边框颜色</span>
+                                    </section>
+                                    <section class="dtm-color margin-right-70px">
+                                        <section class=""></section>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">图例内边距</span>
+                                    </section>
+                                    <section class="dtm-edtitm-con">
+                                        <section class="dtm-edtitm-height">
+                                            <section data-val="mode-padding" class="cpt-sld-bar">
+                                                <section data-val="mode-padding" class="cpt-sld-background">
+                                                    <section class="cpt-sld-highlight"></section>
+                                                </section>
+                                                <section class="cpt-sld-thumb ui-draggable">
+                                                    <section data-val="mode-padding"></section>
+                                                </section>
+                                            </section>
+                                            <section class="dtm-edtitm-editor">
+                                                <input data-val="mode-padding" type="text" value="0"/>
+                                            </section>
+                                            <section class="dtm-msrggt-unit">px</section>
+                                        </section>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">图例项宽度</span>
+                                    </section>
+                                    <section class="dtm-edtitm-con">
+                                        <section class="dtm-edtitm-height">
+                                            <section data-val="mode-item-width" class="cpt-sld-bar">
+                                                <section data-val="mode-item-width" class="cpt-sld-background">
+                                                    <section class="cpt-sld-highlight"></section>
+                                                </section>
+                                                <section class="cpt-sld-thumb ui-draggable">
+                                                    <section data-val="mode-item-width"></section>
+                                                </section>
+                                            </section>
+                                            <section class="dtm-edtitm-editor">
+                                                <input data-val="mode-item-width" type="text" value="0"/>
+                                            </section>
+                                            <section class="dtm-msrggt-unit">px</section>
+                                        </section>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">图例项高度</span>
+                                    </section>
+                                    <section class="dtm-edtitm-con">
+                                        <section class="dtm-edtitm-height">
+                                            <section data-val="mode-item-height" class="cpt-sld-bar">
+                                                <section data-val="mode-item-height" class="cpt-sld-background">
+                                                    <section class="cpt-sld-highlight"></section>
+                                                </section>
+                                                <section class="cpt-sld-thumb ui-draggable">
+                                                    <section data-val="mode-item-height"></section>
+                                                </section>
+                                            </section>
+                                            <section class="dtm-edtitm-editor">
+                                                <input data-val="mode-item-height" type="text" value="0"/>
+                                            </section>
+                                            <section class="dtm-msrggt-unit">px</section>
+                                        </section>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item border-bottom padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">图例各项之间间距</span>
+                                    </section>
+                                    <section class="dtm-edtitm-con">
+                                        <section class="dtm-edtitm-height">
+                                            <section data-val="mode-item-margin" class="cpt-sld-bar">
+                                                <section data-val="mode-item-margin" class="cpt-sld-background">
+                                                    <section class="cpt-sld-highlight"></section>
+                                                </section>
+                                                <section class="cpt-sld-thumb ui-draggable">
+                                                    <section data-val="mode-item-margin"></section>
+                                                </section>
+                                            </section>
+                                            <section class="dtm-edtitm-editor">
+                                                <input data-val="mode-item-margin" type="text" value="0"/>
+                                            </section>
+                                            <section class="dtm-msrggt-unit">px</section>
+                                        </section>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom">
+                                <section class="dtm-item-content padding-top-bottom">
+                                    <section class="dtm-edtitm-title">
+                                        <span class="dtm-edtitm-title-con special-font-color">图例文字样式</span>
+                                    </section>
+                                </section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">文本颜色</span>
+                                    </section>
+                                    <section class="dtm-color margin-right-70px">
+                                        <section class=""></section>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">字体大小</span>
+                                    </section>
+                                    <section class="dtm-edtitm-con">
+                                        <section class="dtm-edtitm-height">
+                                            <section data-val="mode-font" class="cpt-sld-bar">
+                                                <section data-val="mode-font" class="cpt-sld-background">
+                                                    <section class="cpt-sld-highlight"></section>
+                                                </section>
+                                                <section class="cpt-sld-thumb ui-draggable">
+                                                    <section data-val="mode-font"></section>
+                                                </section>
+                                            </section>
+                                            <section class="dtm-edtitm-editor">
+                                                <input data-val="mode-font" type="text" value="0"/>
+                                            </section>
+                                            <section class="dtm-msrggt-unit">px</section>
+                                        </section>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content dtm-item-flex-start">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">字体样式</span>
+                                    </section>
+                                    <section class="dtm-edtitm-title dtm-title-style mode-title-style">
+                                        <span class="shape cur">普通</span>
+                                        <span class="shape">倾斜文字(oblique)</span>
+                                        <span class="shape">斜体(italic)</span>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">字体粗细</span>
+                                    </section>
+                                    <section class="dtm-edtitm-title dtm-title-font-style mode-title-font">
+                                        <span class="shape cur">普通</span>
+                                        <span class="shape">加粗</span>
+                                        <span class="shape">更粗</span>
+                                        <span class="shape">更细</span>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content dtm-item-flex-center">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con text-align-way">文本水平对齐方式</span>
+                                    </section>
+                                    <section class="dtm-edtitm-title dtm-text-align-way mode-text-align">
+                                        <span class="shape cur">居左</span>
+                                        <span class="shape">居中</span>
+                                        <span class="shape">居右</span>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content dtm-item-flex-center">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con text-align-way">文本垂直对齐方式</span>
+                                    </section>
+                                    <section class="dtm-edtitm-title dtm-text-align-way mode-text-vertical">
+                                        <span class="shape cur">居上</span>
+                                        <span class="shape">居中</span>
+                                        <span class="shape">居下</span>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                        </section>
+                        <!--基础结束-->
+                    </section>
+                    <!--图例结束-->
+                    <!--提示开始-->
+                    <section class="adjustment-param-container">
+                        <section class="dtm-tab1">
+                            <section class="dtm-tab1-inner">
+                                <section data-cpt-tab1="base" class="dtm-tab1-hi dtm-tab1-hi-curr">通用</section>
+                            </section>
+                        </section>
+                        <!--通用开始-->
+                        <section class="dtm-container active">
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content dtm-item-flex-start">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">是否使用提示</span>
+                                    </section>
+                                    <section class="dtm-edtitm-title tip-text-style tips-yes-or-no">
+                                        <span class="shape cur yes-or-no">是</span>
+                                        <span class="shape yes-or-no">否</span>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom">
+                                <section class="dtm-item-content padding-top-bottom">
+                                    <section class="dtm-edtitm-title">
+                                        <span class="dtm-edtitm-title-con special-font-color">格式模板</span>
+                                    </section>
+                                </section>
+                            </section>
+                            <section class="dtm-item padding-bottom-10 cpt-chkbtn-disabled">
+                                <section class="dtm-item-content dtm-item-flex-start">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">普通提示模板</span>
+                                    </section>
+                                    <section class="tip-text-style">
+                                        <p>模板中可以试试看“{a} {b} {c} {d} {e}”这些变量</p>
+                                        <section class="dtm-edtitm-con dtm-edtitm-input">
+                                            <input type="text" name="main-title">
+                                        </section>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item border-bottom padding-bottom-10 cpt-chkbtn-disabled">
+                                <section class="dtm-item-content dtm-item-flex-start">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">孤岛提示模板</span>
+                                    </section>
+                                    <section class="tip-text-style">
+                                        <p>模板中可以试试看“{a} {b} {c} {d} {e}”这些变量</p>
+                                        <section class="dtm-edtitm-con dtm-edtitm-input">
+                                            <input type="text" name="main-title" value="{a} <br>{b} : {c}">
+                                        </section>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom">
+                                <section class="dtm-item-content padding-top-bottom">
+                                        <section class="dtm-edtitm-title">
+                                            <span class="dtm-edtitm-title-con special-font-color">提示外观</span>
+                                        </section>
+                                </section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">背景颜色</span>
+                                    </section>
+                                    <section class="dtm-color margin-right-70px">
+                                        <section class=""></section>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">边框粗细</span>
+                                    </section>
+                                    <section class="dtm-edtitm-con">
+                                        <section class="dtm-edtitm-height">
+                                            <section data-val="tips-border" class="cpt-sld-bar">
+                                                <section data-val="tips-border" class="cpt-sld-background">
+                                                    <section class="cpt-sld-highlight"></section>
+                                                </section>
+                                                <section class="cpt-sld-thumb ui-draggable">
+                                                    <section data-val="tips-border"></section>
+                                                </section>
+                                            </section>
+                                            <section class="dtm-edtitm-editor">
+                                                <input data-val="tips-border" type="text" value="0"/>
+                                            </section>
+                                            <section class="dtm-msrggt-unit">px</section>
+                                        </section>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">边框颜色</span>
+                                    </section>
+                                    <section class="dtm-color margin-right-70px">
+                                        <section class=""></section>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">边框圆角</span>
+                                    </section>
+                                    <section class="dtm-edtitm-con">
+                                        <section class="dtm-edtitm-height">
+                                            <section data-val="tips-border-radius" class="cpt-sld-bar">
+                                                <section data-val="tips-border-radius" class="cpt-sld-background">
+                                                    <section class="cpt-sld-highlight"></section>
+                                                </section>
+                                                <section class="cpt-sld-thumb ui-draggable">
+                                                    <section data-val="tips-border-radius"></section>
+                                                </section>
+                                            </section>
+                                            <section class="dtm-edtitm-editor">
+                                                <input data-val="tips-border-radius" type="text" value="0"/>
+                                            </section>
+                                            <section class="dtm-msrggt-unit">px</section>
+                                        </section>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item border-bottom padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">内边距</span>
+                                    </section>
+                                    <section class="dtm-edtitm-con">
+                                        <section class="dtm-edtitm-height">
+                                            <section data-val="tips-padding" class="cpt-sld-bar">
+                                                <section data-val="tips-padding" class="cpt-sld-background">
+                                                    <section class="cpt-sld-highlight"></section>
+                                                </section>
+                                                <section class="cpt-sld-thumb ui-draggable">
+                                                    <section data-val="tips-padding"></section>
+                                                </section>
+                                            </section>
+                                            <section class="dtm-edtitm-editor">
+                                                <input data-val="tips-padding" type="text" value="0"/>
+                                            </section>
+                                            <section class="dtm-msrggt-unit">px</section>
+                                        </section>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom">
+                                <section class="dtm-item-content padding-top-bottom">
+                                    <section class="dtm-edtitm-title">
+                                        <span class="dtm-edtitm-title-con special-font-color">提示文本样式</span>
+                                    </section>
+                                </section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">文本颜色</span>
+                                    </section>
+                                    <section class="dtm-color margin-right-70px">
+                                        <section class=""></section>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">字体大小</span>
+                                    </section>
+                                    <section class="dtm-edtitm-con">
+                                        <section class="dtm-edtitm-height">
+                                            <section data-val="tips-font" class="cpt-sld-bar">
+                                                <section data-val="tips-font" class="cpt-sld-background">
+                                                    <section class="cpt-sld-highlight"></section>
+                                                </section>
+                                                <section class="cpt-sld-thumb ui-draggable">
+                                                    <section data-val="tips-font"></section>
+                                                </section>
+                                            </section>
+                                            <section class="dtm-edtitm-editor">
+                                                <input data-val="tips-font" type="text" value="0"/>
+                                            </section>
+                                            <section class="dtm-msrggt-unit">px</section>
+                                        </section>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                    <section class="dtm-item-content dtm-item-flex-start">
+                                        <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                            <span class="dtm-item-check">
+                                                <i class="fa fa-check"></i>
+                                            </span>
+                                            <span class="dtm-edtitm-title-con">字体样式</span>
+                                        </section>
+                                        <section class="dtm-edtitm-title dtm-title-style tips-title-style">
+                                            <span class="shape cur">普通</span>
+                                            <span class="shape">倾斜文字(oblique)</span>
+                                            <span class="shape">斜体(italic)</span>
+                                        </section>
+                                    </section>
+                                    <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">字体粗细</span>
+                                    </section>
+                                    <section class="dtm-edtitm-title dtm-title-font-style tips-title-font">
+                                        <span class="shape cur">普通</span>
+                                        <span class="shape">加粗</span>
+                                        <span class="shape">更粗</span>
+                                        <span class="shape">更细</span>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content dtm-item-flex-center">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con text-align-way">文本水平对齐方式</span>
+                                    </section>
+                                    <section class="dtm-edtitm-title dtm-text-align-way tips-text-align">
+                                        <span class="shape cur">居左</span>
+                                        <span class="shape">居中</span>
+                                        <span class="shape">居右</span>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom border-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content dtm-item-flex-center">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con text-align-way">文本垂直对齐方式</span>
+                                    </section>
+                                    <section class="dtm-edtitm-title dtm-text-align-way tips-text-vertical">
+                                        <span class="shape cur">居上</span>
+                                        <span class="shape">居中</span>
+                                        <span class="shape">居下</span>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom">
+                                <section class="dtm-item-content padding-top-bottom">
+                                    <section class="dtm-edtitm-title">
+                                        <span class="dtm-edtitm-title-con special-font-color">提示的提示器设置</span>
+                                    </section>
+                                </section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content dtm-item-flex-start">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">提示器触发点</span>
+                                    </section>
+                                    <section class="dtm-edtitm-title tip-text-style tips-item-or-axis">
+                                        <span class="shape cur yes-or-no">在项上面触发(item)</span>
+                                        <span class="shape yes-or-no">在轴上触发(axis)</span>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content dtm-item-flex-start">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">提示的提示器样式</span>
+                                    </section>
+                                    <section class="dtm-edtitm-title tip-text-style tips-border-style">
+                                        <span class="shape cur yes-or-no">提示线</span>
+                                        <span class="shape yes-or-no">提示阴影</span>
+                                        <span class="shape yes-or-no">无</span>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom">
+                                <section class="dtm-item-content padding-top-bottom">
+                                    <section class="dtm-edtitm-title">
+                                        <span class="dtm-edtitm-title-con special-font-color">提示线样式设置(类型为"提示线"时有效)</span>
+                                    </section>
+                                </section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">线条颜色</span>
+                                    </section>
+                                    <section class="dtm-color margin-right-70px">
+                                        <section class=""></section>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">线条宽度</span>
+                                    </section>
+                                    <section class="dtm-edtitm-con">
+                                        <section class="dtm-edtitm-height">
+                                            <section data-val="tips-border-width" class="cpt-sld-bar">
+                                                <section data-val="tips-border-width" class="cpt-sld-background">
+                                                    <section class="cpt-sld-highlight"></section>
+                                                </section>
+                                                <section class="cpt-sld-thumb ui-draggable">
+                                                    <section data-val="tips-border-width"></section>
+                                                </section>
+                                            </section>
+                                            <section class="dtm-edtitm-editor">
+                                                <input data-val="tips-border-width" type="text" value="0"/>
+                                            </section>
+                                            <section class="dtm-msrggt-unit">px</section>
+                                        </section>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom">
+                                <section class="dtm-item-content padding-top-bottom">
+                                    <section class="dtm-edtitm-title dtm-more-item">
+                                        <i class="fa fa-caret-down fa-lg"></i>
+                                        更多选项
+                                    </section>
+                                </section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled cpt-chkbtn-display">
+                                <section class="dtm-item-content dtm-item-flex-start">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">线条类型</span>
+                                    </section>
+                                    <section class="dtm-edtitm-title tip-text-style tips-line-style">
+                                        <span class="shape cur yes-or-no">实线</span>
+                                        <span class="shape yes-or-no">点状线</span>
+                                        <span class="shape yes-or-no">虚线</span>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom">
+                                <section class="dtm-item-content padding-top-bottom">
+                                    <section class="dtm-edtitm-title">
+                                        <span class="dtm-edtitm-title-con special-font-color">提示阴影样式设置(类型为"阴影"时有效)</span>
+                                    </section>
+                                </section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content dtm-item-flex-start">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">区域是否填充默认颜色</span>
+                                    </section>
+                                    <section class="dtm-edtitm-title tip-text-style tips-area-bg">
+                                        <span class="shape cur yes-or-no">填充</span>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item border-bottom padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">区域是否填充颜色自定义</span>
+                                    </section>
+                                    <section class="dtm-color margin-right-70px">
+                                        <section class=""></section>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom">
+                                <section class="dtm-item-content padding-top-bottom">
+                                    <section class="dtm-edtitm-title">
+                                        <span class="dtm-edtitm-title-con special-font-color">延时和动画</span>
+                                    </section>
+                                </section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">显示延时</span>
+                                    </section>
+                                    <section class="dtm-edtitm-con">
+                                        <section class="dtm-edtitm-height">
+                                            <section data-val="show-delay" class="cpt-sld-bar">
+                                                <section data-val="show-delay" class="cpt-sld-background">
+                                                    <section class="cpt-sld-highlight"></section>
+                                                </section>
+                                                <section class="cpt-sld-thumb ui-draggable">
+                                                    <section data-val="show-delay"></section>
+                                                </section>
+                                            </section>
+                                            <section class="dtm-edtitm-editor">
+                                                <input data-val="show-delay" type="text" value="0"/>
+                                            </section>
+                                            <section class="dtm-msrggt-unit">ms</section>
+                                        </section>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">隐藏延时</span>
+                                    </section>
+                                    <section class="dtm-edtitm-con">
+                                        <section class="dtm-edtitm-height">
+                                            <section data-val="hide-delay" class="cpt-sld-bar">
+                                                <section data-val="hide-delay" class="cpt-sld-background">
+                                                    <section class="cpt-sld-highlight"></section>
+                                                </section>
+                                                <section class="cpt-sld-thumb ui-draggable">
+                                                    <section data-val="hide-delay"></section>
+                                                </section>
+                                            </section>
+                                            <section class="dtm-edtitm-editor">
+                                                <input data-val="hide-delay" type="text" value="0"/>
+                                            </section>
+                                            <section class="dtm-msrggt-unit">ms</section>
+                                        </section>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">动画变换时长</span>
+                                    </section>
+                                    <section class="dtm-edtitm-con">
+                                        <section class="dtm-edtitm-height">
+                                            <section data-val="animate-switch" class="cpt-sld-bar">
+                                                <section data-val="animate-switch" class="cpt-sld-background">
+                                                    <section class="cpt-sld-highlight"></section>
+                                                </section>
+                                                <section class="cpt-sld-thumb ui-draggable">
+                                                    <section data-val="animate-switch"></section>
+                                                </section>
+                                            </section>
+                                            <section class="dtm-edtitm-editor">
+                                                <input data-val="animate-switch" type="text" value="0"/>
+                                            </section>
+                                            <section class="dtm-msrggt-unit">ms</section>
+                                        </section>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+
+                        </section>
+                        <!--通用结束-->
+                    </section>
+                    <!--提示结束-->
+                    <!--工具开始-->
+                     <section class="adjustment-param-container">
+                        <section class="dtm-tab1">
+                            <section class="dtm-tab1-inner">
+                                <section data-cpt-tab1="base" class="dtm-tab1-hi dtm-tab1-hi-curr">基础</section>
+                            </section>
+                        </section>
+                        <!--基础开始-->
+                        <section class="dtm-container active">
+                            <section class="dtm-item padding-top-bottom border-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">是否显示工具箱</span>
+                                    </section>
+                                    <section class="dtm-edtitm-title margin-right-130 tool-yes-or-no">
+                                        <span class="shape cur yes-or-no">是</span>
+                                        <span class="shape yes-or-no">否</span>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom">
+                                <section class="dtm-item-content padding-top-bottom">
+                                        <section class="dtm-edtitm-title">
+                                            <span class="dtm-edtitm-title-con special-font-color">工具箱位置</span>
+                                        </section>
+                                </section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">水平安放位置</span>
+                                    </section>
+                                    <section class="change-btn align-position-change">
+                                        切换
+                                    </section>
+                                    <section class="dtm-edtitm-title margin-right-50 dtm-align-position title-active fixed-position tool-align-position">
+                                        <span class="shape cur">居左</span>
+                                        <span class="shape">居中</span>
+                                        <span class="shape">居右</span>
+                                    </section>
+                                    <section class="dtm-edtitm-title dtm-align-position random-position">
+                                      <section class="dtm-edtitm-height">
+                                            <section data-val="tool-align-position" class="cpt-sld-bar">
+                                                <section data-val="tool-align-position" class="cpt-sld-background">
+                                                    <section class="cpt-sld-highlight"></section>
+                                                </section>
+                                                <section class="cpt-sld-thumb ui-draggable">
+                                                    <section data-val="tool-align-position"></section>
+                                                </section>
+                                            </section>
+                                            <section class="dtm-edtitm-editor">
+                                                <input data-val="tool-align-position" type="text" value="0"/>
+                                            </section>
+                                            <section class="dtm-msrggt-unit">px</section>
+                                        </section>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">垂直安放位置</span>
+                                    </section>
+                                    <section class="change-btn vertical-position-change">
+                                        切换
+                                    </section>
+                                    <section class="dtm-edtitm-title margin-right-50 dtm-vertical-position title-active fixed-position tool-vertical-position">
+                                        <span class="shape cur">居左</span>
+                                        <span class="shape">居中</span>
+                                        <span class="shape">居右</span>
+                                    </section>
+                                    <section class="dtm-edtitm-title dtm-vertical-position random-position">
+                                      <section class="dtm-edtitm-height">
+                                            <section data-val="tool-vertical-position" class="cpt-sld-bar">
+                                                <section data-val="tool-vertical-position" class="cpt-sld-background">
+                                                    <section class="cpt-sld-highlight"></section>
+                                                </section>
+                                                <section class="cpt-sld-thumb ui-draggable">
+                                                    <section data-val="tool-vertical-position"></section>
+                                                </section>
+                                            </section>
+                                            <section class="dtm-edtitm-editor">
+                                                <input data-val="tool-vertical-position" type="text" value="0"/>
+                                            </section>
+                                            <section class="dtm-msrggt-unit">px</section>
+                                        </section>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom border-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">水平对齐位置</span>
+                                    </section>
+                                    <section class="dtm-edtitm-title margin-right-50 dtm-text-align title-align-active fixed-position tool-text-align">
+                                        <span class="shape cur">居左</span>
+                                        <span class="shape">居中</span>
+                                        <span class="shape">居右</span>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom">
+                                <section class="dtm-item-content padding-top-bottom">
+                                    <section class="dtm-edtitm-title">
+                                        <span class="dtm-edtitm-title-con special-font-color">功能按钮设置</span>
+                                    </section>
+                                </section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">绘制辅助线功能按钮</span>
+                                    </section>
+                                    <section class="dtm-edtitm-title margin-right-130 tool-draw">
+                                        <span class="shape cur yes-or-no">是</span>
+                                        <span class="shape yes-or-no">否</span>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">选区缩放功能按钮</span>
+                                    </section>
+                                    <section class="dtm-edtitm-title margin-right-130 tool-electoral">
+                                        <span class="shape cur yes-or-no">是</span>
+                                        <span class="shape yes-or-no">否</span>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">切换至数据视图按钮</span>
+                                    </section>
+                                    <section class="dtm-edtitm-title margin-right-130 tool-switch-data">
+                                        <span class="shape cur yes-or-no">是</span>
+                                        <span class="shape yes-or-no">否</span>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">折柱切换按钮</span>
+                                    </section>
+                                    <section class="dtm-edtitm-title margin-right-130 tool-line-switch-col">
+                                        <span class="shape cur yes-or-no">是</span>
+                                        <span class="shape yes-or-no">否</span>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">还原按钮</span>
+                                    </section>
+                                    <section class="dtm-edtitm-title margin-right-130 tool-restore">
+                                        <span class="shape cur yes-or-no">是</span>
+                                        <span class="shape yes-or-no">否</span>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom border-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">保存为图片按钮</span>
+                                    </section>
+                                    <section class="dtm-edtitm-title margin-right-130 tool-save-img">
+                                        <span class="shape cur yes-or-no">是</span>
+                                        <span class="shape yes-or-no">否</span>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom">
+                                <section class="dtm-item-content padding-top-bottom">
+                                    <section class="dtm-edtitm-title">
+                                        <span class="dtm-edtitm-title-con special-font-color">工具箱外观</span>
+                                    </section>
+                                </section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">工具箱背景颜色</span>
+                                    </section>
+                                    <section class="dtm-color margin-right-70px">
+                                        <section class=""></section>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">工具箱边框线宽</span>
+                                    </section>
+                                    <section class="dtm-edtitm-con">
+                                        <section class="dtm-edtitm-height">
+                                            <section data-val="tool-border" class="cpt-sld-bar">
+                                                <section data-val="tool-border" class="cpt-sld-background">
+                                                    <section class="cpt-sld-highlight"></section>
+                                                </section>
+                                                <section class="cpt-sld-thumb ui-draggable">
+                                                    <section data-val="tool-border"></section>
+                                                </section>
+                                            </section>
+                                            <section class="dtm-edtitm-editor">
+                                                <input data-val="tool-border" type="text" value="0"/>
+                                            </section>
+                                            <section class="dtm-msrggt-unit">px</section>
+                                        </section>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">工具箱边框颜色</span>
+                                    </section>
+                                    <section class="dtm-color margin-right-70px">
+                                        <section class=""></section>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">工具箱内边距</span>
+                                    </section>
+                                    <section class="dtm-edtitm-con">
+                                        <section class="dtm-edtitm-height">
+                                            <section data-val="tool-padding" class="cpt-sld-bar">
+                                                <section data-val="tool-padding" class="cpt-sld-background">
+                                                    <section class="cpt-sld-highlight"></section>
+                                                </section>
+                                                <section class="cpt-sld-thumb ui-draggable">
+                                                    <section data-val="tool-padding"></section>
+                                                </section>
+                                            </section>
+                                            <section class="dtm-edtitm-editor">
+                                                <input data-val="tool-padding" type="text" value="0"/>
+                                            </section>
+                                            <section class="dtm-msrggt-unit">px</section>
+                                        </section>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">工具箱每项大小</span>
+                                    </section>
+                                    <section class="dtm-edtitm-con">
+                                        <section class="dtm-edtitm-height">
+                                            <section data-val="tool-item" class="cpt-sld-bar">
+                                                <section data-val="tool-item" class="cpt-sld-background">
+                                                    <section class="cpt-sld-highlight"></section>
+                                                </section>
+                                                <section class="cpt-sld-thumb ui-draggable">
+                                                    <section data-val="tool-item"></section>
+                                                </section>
+                                            </section>
+                                            <section class="dtm-edtitm-editor">
+                                                <input data-val="tool-item" type="text" value="0"/>
+                                            </section>
+                                            <section class="dtm-msrggt-unit">px</section>
+                                        </section>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item border-bottom padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">工具箱各项之间间隔</span>
+                                    </section>
+                                    <section class="dtm-edtitm-con">
+                                        <section class="dtm-edtitm-height">
+                                            <section data-val="tool-item-margin" class="cpt-sld-bar">
+                                                <section data-val="tool-item-margin" class="cpt-sld-background">
+                                                    <section class="cpt-sld-highlight"></section>
+                                                </section>
+                                                <section class="cpt-sld-thumb ui-draggable">
+                                                    <section data-val="tool-item-margin"></section>
+                                                </section>
+                                            </section>
+                                            <section class="dtm-edtitm-editor">
+                                                <input data-val="tool-item-margin" type="text" value="0"/>
+                                            </section>
+                                            <section class="dtm-msrggt-unit">px</section>
+                                        </section>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom">
+                                <section class="dtm-item-content padding-top-bottom">
+                                    <section class="dtm-edtitm-title">
+                                        <span class="dtm-edtitm-title-con special-font-color">鼠标放上时的提示文字设置</span>
+                                    </section>
+                                </section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom border-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">鼠标放上时是否显示文字提示</span>
+                                    </section>
+                                    <section class="dtm-edtitm-title margin-right-130 tool-hover-font">
+                                        <span class="shape cur yes-or-no">是</span>
+                                        <span class="shape yes-or-no">否</span>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                             <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">字体大小</span>
+                                    </section>
+                                    <section class="dtm-edtitm-con">
+                                        <section class="dtm-edtitm-height">
+                                            <section data-val="tool-title-font" class="cpt-sld-bar">
+                                                <section data-val="tool-title-font" class="cpt-sld-background">
+                                                    <section class="cpt-sld-highlight"></section>
+                                                </section>
+                                                <section class="cpt-sld-thumb ui-draggable">
+                                                    <section data-val="tool-title-font"></section>
+                                                </section>
+                                            </section>
+                                            <section class="dtm-edtitm-editor">
+                                                <input data-val="tool-title-font" type="text" value="0"/>
+                                            </section>
+                                            <section class="dtm-msrggt-unit">px</section>
+                                        </section>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                    <section class="dtm-item-content dtm-item-flex-start">
+                                        <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                            <span class="dtm-item-check">
+                                                <i class="fa fa-check"></i>
+                                            </span>
+                                            <span class="dtm-edtitm-title-con">字体样式</span>
+                                        </section>
+                                        <section class="dtm-edtitm-title dtm-title-style tool-title-style">
+                                            <span class="shape cur">普通</span>
+                                            <span class="shape">倾斜文字(oblique)</span>
+                                            <span class="shape">斜体(italic)</span>
+                                        </section>
+                                    </section>
+                                    <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                            <section class="dtm-item padding-top-bottom cpt-chkbtn-disabled">
+                                <section class="dtm-item-content">
+                                    <section class="dtm-edtitm-title dtm-edtitm-title-check">
+                                        <span class="dtm-item-check">
+                                            <i class="fa fa-check"></i>
+                                        </span>
+                                        <span class="dtm-edtitm-title-con">字体粗细</span>
+                                    </section>
+                                    <section class="dtm-edtitm-title dtm-title-font-style tool-title-font">
+                                        <span class="shape cur">普通</span>
+                                        <span class="shape">加粗</span>
+                                        <span class="shape">更粗</span>
+                                        <span class="shape">更细</span>
+                                    </section>
+                                </section>
+                                <section class="dtm-edtitm-mask dtm-edtitm-tooltip"></section>
+                            </section>
+                        </section>
+                        <!--基础结束-->
+                    </section>
+                    <!--工具结束-->
+                </section>
+            </section>
+        </section>
+</section>
+

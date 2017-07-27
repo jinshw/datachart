@@ -1,0 +1,11 @@
+[
+	{"cpt-style":"line","title":"折线图","id":"line"},
+	{"cpt-style":"bar","title":"柱状图","id":"bar"},
+	{"cpt-style":"pie","title":"饼　图","id":"pie"},
+	{"cpt-style":"map","title":"地　图","id":"map"},
+	{"cpt-style":"scatter","title":"散点图","id":"scatter"},
+	{"cpt-style":"bubble","title":"气泡图","id":"bubble"},
+	{"cpt-style":"radar","title":"雷达图","id":"radar"},
+	{"cpt-style":"funnel","title":"漏斗图","id":"funnel"},
+	{"cpt-style":"gauge","title":"仪表盘","id":"gauge"}
+  ]

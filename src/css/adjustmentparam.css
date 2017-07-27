@@ -1,0 +1,585 @@
+.dtm-adjustment-param{
+	margin: 10px;
+/*	display: flex;*/
+    display: none;
+}
+.dtm-adjustment-param .adjustment-param-menu-container{
+	width: 55px;
+	margin-top: 20px;
+}
+.adjustment-param-menu-container .adjustment-param-menu{
+	width: 100%;
+	list-style-type: none;
+}
+.adjustment-param-menu-container .adjustment-param-item{
+	width: 100%;
+	text-align: center;
+	padding: 10px 0;
+    border-radius-top-left: 5px;
+    border-radius-bottom-left: 5px;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+	margin: 5px 0;
+	cursor: pointer;
+}
+.adjustment-param-menu-container .adjustment-param-item.active,
+.adjustment-param-menu-container .adjustment-param-item:hover{
+	background-color: #5B5D6B;
+}
+.adjustment-param-container{
+    display: none;
+}
+.adjustment-param-container.active{
+    display: flex;
+}
+.adjustment-param-container .dtm-tab1{
+	width: 65px;
+    border-radius-top-left: 5px;
+    border-radius-bottom-left: 5px;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+	background-color: #5B5D6B;
+}
+.adjustment-param-container .dtm-tab1-inner{
+	width: 100%;
+}
+.adjustment-param-container .dtm-tab1-hi{
+	position: relative;
+	width: 100%;
+	text-align: center;
+	padding: 10px 0;
+	cursor: pointer;
+}
+
+.adjustment-param-container .dtm-tab1-hi.dtm-tab1-hi-curr:after,
+.adjustment-param-container .dtm-tab1-hi:hover:after{
+    display: block;
+    font-style: normal;
+    width: 0;
+    height: 0;
+    font-size: 0;
+    overflow: hidden;
+    border-width: 10px 8px 10px 0;
+    border-style: solid;
+    border-color: transparent #4c4e59 transparent transparent;
+    content: ".";
+    position: absolute;
+    top: 8px;
+    right: 0;
+}
+.adjustment-param-container .dtm-container{
+    padding: 20px 15px;
+    width: 500px;
+    height: 490px;
+    background-color: #4C4E59;
+    overflow: hidden;
+    overflow-y: scroll;
+    display: none;
+}
+.adjustment-param-container .dtm-container.active{
+    display: block;
+}
+/*dtm-item样式*/
+.adjustment-param-container .dtm-item{
+    position: relative;
+    color: #f0f0f0;
+}
+/*不可用状态*/
+.adjustment-param-container .cpt-chkbtn-disabled{
+    color: #828599;
+}
+.adjustment-param-container .dtm-item.border-bottom{
+    border-bottom: 1px solid #5b5d6b;
+}
+.adjustment-param-container .dtm-item.padding-top-bottom{
+    padding: 10px 0;
+}
+/*设置的title样式*/
+.dtm-item-content{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+/*文字颜色*/
+.special-font-color{
+    color: #adc7df;
+}
+.dtm-edtitm-title-con{
+    cursor: default;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/*两端对齐*/
+.dtm-item-content .margin-right-100px{
+    margin-right: 100px;
+}
+.dtm-item-content .margin-right-70px{
+    margin-right: 70px;
+}
+.dtm-item-content .dtm-edtitm-title{
+    display: flex;
+    color: #f0f0f0;
+    white-space: nowrap;
+}
+.cpt-chkbtn-disabled .dtm-item-content .dtm-edtitm-title{
+    color: #828599;
+}
+.cpt-chkbtn-disabled .dtm-item-content .dtm-edtitm-title .shape{
+     border: 1px solid #828599;
+}
+/*模拟复选框样式*/
+.dtm-item-content .dtm-edtitm-title .dtm-item-check{
+    display: inline-block;
+    line-height: 13px;
+    text-align: center;
+    width: 13px;
+    height: 13px;
+    border: 1px solid #f0f0f0;
+    margin-right: 5px;
+}
+.cpt-chkbtn-disabled .dtm-edtitm-title .dtm-item-check{
+    border: 1px solid #828599;
+}
+.dtm-item-content .dtm-edtitm-title .dtm-item-check i{
+    font-size: 10px;
+    font-weight: 100;
+    display: none;
+    color: #f0f0f0;
+}
+.dtm-item-content .dtm-edtitm-title .dtm-item-check i.dtm-item-checked{
+    display: inline;
+}
+/*调整大小滚动样式*/
+.dtm-edtitm-height{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.cpt-sld-bar{
+    position: relative;
+    width: 182px;
+    height: 8px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    overflow: visible;
+    padding: 0;
+    margin: 0;
+}
+.cpt-sld-background{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    border: 1px solid #979bb2;
+}
+.cpt-chkbtn-disabled .cpt-sld-highlight{
+    background-color: #828599;
+}
+.cpt-sld-highlight{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    padding: 0;
+    margin: 0;
+    background: #f0f0f0;
+}
+.cpt-sld-capture {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    cursor: pointer;
+}
+.dtm-item .cpt-sld-thumb section{
+    background-color: #f0f0f0;
+}
+.cpt-chkbtn-disabled .cpt-sld-thumb section{
+    background: #828599;
+}
+
+.cpt-sld-thumb section {
+    position: absolute;
+    top: -5px;
+    left: -7px;
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    cursor: move;
+}
+/*调整大小显示值*/
+.dtm-edtitm-editor{
+    width: 60px;
+    margin-left: 6px;
+    margin-top: 4px;
+    width: 46px;
+    height: 20px;
+    line-height: 20px;
+    border-radius: 5px;
+    background: #4c4e59;
+    border: 1px solid #979bb2;
+    overflow: hidden;
+}
+.dtm-edtitm-editor input{
+    width: 100%;
+    border: none;
+    outline: none;
+    color: inherit;
+    background: #4c4e59;
+    text-align: center;
+}
+/*span样式*/
+.dtm-edtitm-title .shape{
+    display: inline-block;
+    margin-right: 10px;
+    padding: 0 15px;
+    height: 20px;
+    line-height: 20px;
+    color: #828599;
+    border: 1px solid #828599;
+    /*border-radius: 5px;*/
+    text-align: center;
+    cursor: pointer;
+}
+.dtm-edtitm-title .shape:hover{
+    color: #f0f0f0;
+    border: 1px solid #f0f0f0;
+}
+.dtm-edtitm-title .yes-or-no{
+    padding:0 18px;
+}
+/*选中样式*/
+.dtm-item .dtm-edtitm-title .cur{
+    color: #f0f0f0;
+    border: 1px solid #f0f0f0;
+}
+.cpt-chkbtn-disabled .dtm-edtitm-title .cur{
+    color: #828599;
+    border: 1px solid #828599;
+}
+.dtm-msrggt-unit{
+    margin-left: 5px;
+    color: inherit;
+}
+/*更换颜色样式*/
+.dtm-color{
+    width: 189px;
+    height: 15px;
+    border-radius: 10px; 
+    overflow: hidden;  
+}
+.dtm-item .dtm-color{
+    background-color: #828599;
+}
+.cpt-chkbtn-disabled .dtm-color{
+    background-color: #828599;
+}
+/*蒙版样式*/
+.dtm-edtitm-mask{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+    display: none;
+}
+/*显示蒙版*/
+.dtm-edtitm-tooltip{
+    display: block;
+}
+.dtm-edtitm-input{
+    padding-left: 10px;
+    width: 252px;
+    display: inline-block;
+    padding: 0 6px;
+    height: 26px;
+     line-height: 26px; 
+    background: #fff;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    background: #4c4e59;
+    border: 1px solid #979bb2;
+}
+.dtm-edtitm-input input{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    background: #fff;
+    line-height: normal;
+    border: none;
+    outline: none;
+    font-size: 12px;
+    color: #f0f0f0;
+    background: #4c4e59;
+}
+.cpt-chkbtn-disabled input{
+    color: #4c4e59; 
+    visibility: hidden;
+}
+.padding-bottom-10{
+    padding-bottom: 10px;
+}
+.change-btn{
+    height: 16px;
+    line-height: 16px;
+    background: #f0f0f0;
+    color: #373941;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-align: center;
+    padding: 0 3px;
+    cursor: pointer;
+    margin-left: 90px;
+}
+/*水平安放位置样式*/
+.cpt-chkbtn-disabled .change-btn{
+    background-color: #828599;
+}
+.dtm-edtitm-title.dtm-align-position{
+    display: none;
+}
+.dtm-align-position.title-active{
+    display: flex;
+}
+.margin-right-50{
+    margin-right: 50px;
+}
+.margin-right-37{
+    margin-right: 37px;
+}
+.margin-right-105{
+    margin-right: 105px;
+}
+/*垂直安放位置样式*/
+.dtm-edtitm-title.dtm-vertical-position{
+    display: none;
+}
+.dtm-vertical-position.title-active{
+    display: flex;
+}
+.dtm-item-flex-start{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.dtm-item-flex-start .dtm-edtitm-title-con{
+    width: 100px;
+}
+.dtm-item-flex-start .dtm-title-style{
+    margin-left: 100px;
+    flex-wrap: wrap;
+}
+.dtm-item-flex-start .dtm-title-style span:nth-child(3){
+    margin-top: 10px;
+}
+.dtm-item-flex-center{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.dtm-item-flex-center .text-align-way{
+    width: 100px;
+}
+.dtm-item-flex-center .dtm-text-align-way{
+    margin-left: 100px;
+}
+/*图例位置样式*/
+.legend{
+    margin-left: 53px;
+    margin-right: 13px;
+}
+.dtm-item-flex-start .tip-text-style{
+    margin-left: 100px;
+}
+.dtm-item-flex-start .tip-text-style p{
+    margin-bottom: 5px;
+}
+.dtm-item .dtm-more-item{
+    cursor: pointer;
+    border: 1px solid #979bb2;
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+.cpt-chkbtn-display{
+    display: none;
+}
+.dtm-item .margin-right-130{
+    margin-right: 130px;
+}
+/*作品索引样式*/
+.work-index{
+    display: flex;
+    align-items:center;
+    width: 256px;
+}
+.work-index .dtm-edtitm-input{
+    width: 170px;
+}
+.confirm-btn{
+    display: flex;
+    color: #fff;
+    margin-left: 10px;
+    padding: 5px 10px;
+    border-radius: 3px;
+    border: 1px solid #fff;
+}
+.cpt-chkbtn-disabled .confirm-btn{
+    border: 1px solid #828599;
+    color: #828599;
+}
+.addIndex{
+    float: left;
+    margin: 3px;
+    border: 1px solid #eee;
+    padding: 4px 15px;
+    border-radius: 2px;
+    font-size: 12px;
+    line-height: 14px;
+    position: relative;
+}
+.remove-index{
+    position: absolute;
+    display: none;
+    cursor: pointer;
+    right: 0px;
+    top: -2px;
+    color: #ADC7DF;
+    font-size: 14px;
+}
+.addIndex:hover .remove-index{
+    display: inline;
+}
+/*调色板样式*/
+ table.jPicker {
+    -webkit-box-shadow: rgba(0, 0, 0, 0.6) 0px 1px 3px, rgba(255, 255, 255, 0.1) 0px 1px 0px inset, rgba(0, 0, 0, 0.2) 0px -1px 0px inset;
+    -moz-box-shadow: rgba(0, 0, 0, 0.6) 0px 1px 3px, rgba(255, 255, 255, 0.1) 0px 1px 0px inset, rgba(0, 0, 0, 0.2) 0px -1px 0px inset;
+    box-shadow: rgba(0, 0, 0, 0.6) 0px 1px 3px, rgba(255, 255, 255, 0.1) 0px 1px 0px inset, rgba(0, 0, 0, 0.2) 0px -1px 0px inset;
+    -webkit-border-radius: 2px solid #beb764;
+    -moz-border-radius: 2px solid #beb764;
+    border-radius: 2px solid #beb764;
+    padding: 15px;
+    margin: 0;
+    background: #373941;
+    color: #f0f0f0;
+    overflow: hidden;
+    z-index: 1010;
+    border-width: 1px;
+    padding: 10px
+}
+
+ .jPicker .Title {
+    margin-bottom: 5px;
+    padding-top: 6px
+}
+
+ .jPicker td.Radio {
+    width: 38px
+}
+
+ .jPicker td.Radio input {
+    margin-right: 2px
+}
+
+ .jPicker .Preview {
+    padding-top: 0
+}
+
+ .jPicker .Preview div {
+    border-width: 0
+}
+
+ .jPicker .Preview div span {
+    border-width: 0;
+    width: 62px;
+    height: 31px
+}
+
+ .jPicker .Cancel {
+    display: none
+}
+
+ .jPicker .Button .Ok {
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    display: inline-block;
+    cursor: pointer;
+    color: #fff;
+    background: #3498db;
+    text-align: center;
+    font-size: 14px;
+    min-width: 60px;
+    height: 24px;
+    line-height: 24px;
+    padding: 0 8px;
+    width: 80px;
+    width: 100px;
+    margin: 0 0 14px 0;
+    padding: 0
+}
+
+ .jPicker .Button .Ok-hover {
+    background: #2980b9
+}
+
+ .jPicker .Button .Ok-active {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none
+}
+
+ .jPicker div.Map {
+    border-width: 0
+}
+
+ .jPicker div.Bar {
+    border-width: 0
+}
+
+ .jPicker hr {
+    visibility: hidden
+}
+
+ .jPicker .Grid span.QuickColor {
+    border: 1px solid #373941
+}
+
+ .jPicker td[class="Text"] input {
+    border-width: 0;
+    padding: 0 2px
+}
+
+ .jPicker tr.Hex td.Text input.Hex {
+    width: 46px
+}
+
+ .jPicker tr.Hex td.Text input.AHex {
+    width: 15px;
+    margin-left: 1px
+}

@@ -1,0 +1,24 @@
+{
+  "code": 200,
+  "info": "查询成功",
+  "list": [
+    {
+      "children": [],
+      "createTime": "2016/01/18",
+      "id": "3AD6BA783A6E412989C3B77EB292D160",
+      "isModel": 0,
+      "name": "风景",
+      "ownerId": "731B1229308444219E5A36C85A903117",
+      "pid": ""
+    },
+    {
+      "children": [],
+      "createTime": "2016/01/18",
+      "id": "E3EAFE54682E4AF39116E126945C42F3",
+      "isModel": 0,
+      "name": "我的作品",
+      "ownerId": "731B1229308444219E5A36C85A903117",
+      "pid": ""
+    }
+  ]
+}

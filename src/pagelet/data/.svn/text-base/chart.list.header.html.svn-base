@@ -1,0 +1,16 @@
+<div class="top-nav-container">
+    <div class="top-logo">
+		<a>数据图表</a>
+	</div>
+     <div class="nav-menu">
+      <ul>
+        <li class="active longsinglepage" data-id="1">我的作品</li>
+      </ul>
+     </div>
+  	 <div class="top-nav-icon">
+        <a><i class="fa fa-user top-icon"></i></a>
+        <a><i class="top-icon top-login-username">用户名</i></a>
+        <a href="javascript:void(0)" class="returnback">返回</a>
+      </div>
+  </div>
+<div class="clearfix"></div>

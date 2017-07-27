@@ -1,0 +1,52 @@
+{
+  "routelist":[
+    {
+      "path":"edit.html",
+      "pagelet":[
+        "edit.top.html",
+        "edit.main.html",
+        "cover.set.html"
+      ],
+      "css":[
+        "init.css",
+        "adjustmentparam.css",
+        "handsontable.full.min.css",
+        "edit.css",
+        "jPicker-1.1.6.css",
+        "addorpreview.css",
+        "popUp.css",
+        "cover.set.css"
+      ],
+      "title":"数据图表编辑页面"
+    },
+    {
+      "path":"chart-list.html",
+      "pagelet":[
+        "chart.list.header.html",
+        "chart.list.main.html",
+        "chart.list.footer.html"
+      ],
+      "css":[
+        "init.css",
+        "chart.list.css",
+        "chart.list.main.css",
+        "popUp.css",
+        "addorpreview.css"
+      ],
+      "title":"数据图表列表页面"
+    },
+    {
+      "path":"preview.html",
+      "pagelet":[
+        "pre.main.html"
+      ],
+      "css":[
+        "init.css",
+        "edit.css"
+      ],
+      "title":"数据图表预览页面"
+    }
+
+  ]
+
+}

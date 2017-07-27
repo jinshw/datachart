@@ -1,0 +1,153 @@
+[{
+	"type": "line",
+	"list": [{
+		"url": "line1.png",
+		"title": "标准折线图",
+		"desc": "普通的折线图",
+		"id": "line1"
+	}, {
+		"url": "line2.png",
+		"title": "标准面积图",
+		"desc": "填充样式，平滑曲线",
+		"id": "line2"
+	}, {
+		"url": "line3.png",
+		"title": "堆积面积图",
+		"desc": "任意系列多维度堆积",
+		"id": "line3"
+	}, {
+		"url": "line4.png",
+		"title": "标准折线图",
+		"desc": "横纵坐标互换，平滑曲线",
+		"id": "line4"
+	}]
+}, {
+	"type": "bar",
+	"list": [{
+		"url": "bar1.png",
+		"title": "标准柱状图",
+		"desc": "基本的柱状图",
+		"id": "bar1"
+	}, {
+		"url": "bar2.png",
+		"title": "堆积柱状图",
+		"desc": "任意系列多维度堆积",
+		"id": "bar2"
+	}, {
+		"url": "bar3.png",
+		"title": "标准条形图",
+		"desc": "柱状图的横纵坐标互换",
+		"id": "bar3"
+	}, {
+		"url": "bar4.png",
+		"title": "堆积条形图",
+		"desc": "任意系列多维度堆积",
+		"id": "bar4"
+	}]
+}, {
+	"type": "pie",
+	"list": [{
+		"url": "pie1.png",
+		"title": "标准饼图",
+		"desc": "基本的饼图",
+		"id": "pie1"
+	}, {
+		"url": "pie1.png",
+		"title": "标准饼图",
+		"desc": "基本的饼图，数据标注",
+		"id": "pie2"
+	}, {
+		"url": "pie2.png",
+		"title": "标准环形图",
+		"desc": "基本的环形饼图",
+		"id": "pie3"
+	}, {
+		"url": "pie3.png",
+		"title": "嵌套饼图",
+		"desc": "由两个（或多个）饼图嵌套而成",
+		"id": "pie4"
+	}, {
+		"url": "pie5.png",
+		"title": "南丁格尔玫瑰图",
+		"desc": "半径模式的玫瑰图",
+		"id": "pie5"
+	}, {
+		"url": "pie6.png",
+		"title": "南丁格尔玫瑰图",
+		"desc": "面积模式的玫瑰图",
+		"id": "pie6"
+	}, {
+		"url": "pie7.png",
+		"title": "南丁格尔玫瑰图",
+		"desc": "双玫瑰图",
+		"id": "pie7"
+	}]
+}, {
+	"type": "map",
+	"list": [{
+		"url": "map1.png",
+		"title": "标准中图地图",
+		"desc": "标准中图地图（省级）",
+		"id": "map1"
+	}, {
+		"url": "map2.png",
+		"title": "标准世界地图",
+		"desc": "标准世界地图",
+		"id": "map2"
+	}, {
+		"url": "map3.png",
+		"title": "标准省市区地图",
+		"desc": "标准省市区地图",
+		"id": "map3"
+	}, {
+		"url": "map4.png",
+		"title": "多地图",
+		"desc": "多个地图并存",
+		"id": "map4"
+	}]
+}, {
+	"type": "scatter",
+	"list": [{
+		"url": "scatter1.png",
+		"title": "标准散点图",
+		"desc": "标注，标线",
+		"id": "scatter1"
+	}]
+}, {
+	"type": "bubble",
+	"list": [{
+		"url": "bubble1.png",
+		"title": "标准汽包图",
+		"desc": "气泡大小计算",
+		"id": "bubble1"
+	}]
+}, {
+	"type": "radar",
+	"list": [{
+		"url": "radar1.png",
+		"title": "标准雷达图",
+		"desc": "标准雷达图",
+		"id": "radar1"
+	}]
+}, {
+	"type": "funnel",
+	"list": [{
+		"url": "funnel1.png",
+		"title": "标准漏斗图",
+		"desc": "基本的漏斗图",
+		"id": "funnel1"
+	}, {
+		"url": "funnel2.png",
+		"title": "带辅助背景的漏斗图",
+		"desc": "背景调谐了漏斗的“丁字形状”",
+		"id": "funnel2"
+	}]
+}, {
+	"type": "gauge",
+	"list": [{
+		"url": "gauge1.png",
+		"title": "标准仪表盘",
+		"desc": "标准仪表盘",
+		"id": "gauge1"
+	}]
+}]
